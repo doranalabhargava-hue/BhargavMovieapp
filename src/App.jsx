@@ -10,7 +10,7 @@ const Netflix = () => {
   const handlesubmit = async () => {
     try {
 
-      const res = await axios.get(`http://www.omdbapi.com/?apikey=7e4ecbd9&s=${movies}`);
+      const res = await axios.get(`https://www.omdbapi.com/?apikey=7e4ecbd9&s=${movies}`);
 
       if (res.data.Response === "True") {
         setUser(res.data.Search);
@@ -26,13 +26,13 @@ const Netflix = () => {
   return (
     <div className="main">
 
-      <h1>Welcome To Netflix</h1>
+      <h1 className="title">Netflix Movie Search</h1>
 
       <div className="search">
 
         <input
           type="search"
-          placeholder="Enter Movie Name"
+          placeholder="Search Your Favourite Movie..."
           value={movies}
           onChange={(e) => setMovies(e.target.value)}
         />
@@ -46,9 +46,9 @@ const Netflix = () => {
         {user?.map((item) => (
           <div className="movie-card" key={item.imdbID}>
 
-            <h3>{item.Title}</h3>
-
             <img src={item.Poster} alt="movie" />
+
+            <h3>{item.Title}</h3>
 
             <p>{item.Year}</p>
 
